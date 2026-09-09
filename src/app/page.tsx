@@ -15,7 +15,7 @@ export default function HomePage() {
       {/* 2. Trust-Indicator Row — Cleanly Positioned Below Hero Without Overlap */}
       <section className="relative bg-cream pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10 lg:pb-12 px-6 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl relative z-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 lg:gap-8 items-stretch">
             {[
               {
                 division: "Pharmacy Chain",
@@ -45,8 +45,8 @@ export default function HomePage() {
               const Icon = item.icon;
               const Watermark = item.watermark;
               return (
-                <MotionReveal key={i} delay={i * 90} direction="up">
-                  <div className="group relative overflow-hidden flex items-center gap-4 p-6 pt-7 rounded-2xl bg-gradient-to-br from-white via-[#FAFDFB] to-[#F1F7F3] border border-[#BDD4C4] shadow-[0_12px_32px_-4px_rgba(10,30,18,0.12),0_4px_10px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_42px_-6px_rgba(10,30,18,0.2),0_8px_16px_rgba(0,0,0,0.06)] hover:-translate-y-1.5 hover:border-[#8FB799] transition-all duration-300">
+                <MotionReveal key={i} delay={i * 90} direction="up" className="h-full flex flex-col">
+                  <div className="group relative overflow-hidden flex items-center gap-4 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-white via-[#FAFDFB] to-[#F1F7F3] border border-[#BDD4C4] shadow-[0_12px_32px_-4px_rgba(10,30,18,0.12),0_4px_10px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_42px_-6px_rgba(10,30,18,0.2),0_8px_16px_rgba(0,0,0,0.06)] hover:-translate-y-1.5 hover:border-[#8FB799] transition-all duration-300 w-full h-full min-h-[104px] sm:min-h-[112px] lg:min-h-[116px]">
                     {/* Top Gold Accent Line (3px) Echoing Site Design Language */}
                     <div
                       className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-gold/70 via-gold to-gold/70 group-hover:from-gold group-hover:to-gold transition-colors duration-300"
@@ -61,15 +61,15 @@ export default function HomePage() {
                       <Watermark className="h-24 w-24 sm:h-28 sm:w-28 stroke-[1.25]" />
                     </div>
 
-                    {/* Foreground Content */}
+                    {/* Foreground Content — Vertically Centered */}
                     <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/10 group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-2xs">
                       <Icon className="h-6 w-6 shrink-0 transition-colors" />
                     </div>
-                    <div className="relative z-10 min-w-0 space-y-0.5">
+                    <div className="relative z-10 min-w-0 flex-1 space-y-1">
                       <span className="block text-[11px] uppercase tracking-wider font-semibold text-gold truncate">
                         {item.division}
                       </span>
-                      <span className="block font-serif font-medium text-base text-primary leading-snug">
+                      <span className="block font-serif font-medium text-[15px] sm:text-base text-primary leading-snug">
                         {item.indicator}
                       </span>
                     </div>
