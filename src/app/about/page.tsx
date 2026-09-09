@@ -100,15 +100,15 @@ export default function AboutPage() {
             </div>
 
             <MotionReveal className="lg:col-span-5" delay={80} direction="left">
-              <div className="overflow-hidden rounded-2xl shadow-xl aspect-4/3 relative group bg-ivory">
+              <div className="overflow-hidden rounded-2xl border border-border-subtle/80 shadow-[0_16px_40px_-8px_rgba(10,30,18,0.12),0_4px_12px_rgba(0,0,0,0.04)] aspect-4/3 relative group bg-ivory">
                 <Image
-                  src="/images/about/lamstone-about-image.png"
-                  alt="Lamstone Healthcare corporate journey and vision"
+                  src="/images/about/lamstone-about-story.jpg"
+                  alt="Lamstone Healthcare pharmacist consulting with a patient in a modern dispensary integrating clinical medicine and personal wellness"
                   fill
-                  className="object-cover object-center group-hover:scale-[1.04] transition-transform duration-700 ease-out"
-                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 42vw, 520px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent rounded-2xl pointer-events-none" />
               </div>
             </MotionReveal>
           </div>
