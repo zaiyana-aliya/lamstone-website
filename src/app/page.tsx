@@ -106,13 +106,13 @@ export default function HomePage() {
           </MotionReveal>
 
           {/* Division Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
             {/* Card 1 - Pharmacy Chain */}
-            <MotionReveal delay={100} direction="up">
-              <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-white p-8 sm:p-10 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 ease-out">
-                <div className="space-y-6">
+            <MotionReveal delay={100} direction="up" className="h-full flex flex-col">
+              <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-white p-8 sm:p-10 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 ease-out h-full w-full">
+                <div className="space-y-6 flex-1 flex flex-col">
                   {/* Premium Unsplash image */}
-                  <div className="overflow-hidden rounded-2xl aspect-video relative bg-ivory">
+                  <div className="overflow-hidden rounded-2xl aspect-video relative bg-ivory shrink-0">
                     <Image
                       src="/images/home/lamchain.png"
                       alt="Lamstone Pharmacy Chain retail network"
@@ -122,18 +122,18 @@ export default function HomePage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-dark">
+                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-dark shrink-0">
                     <Building2 className="h-4 w-4" />
                     <span>Healthcare Division</span>
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-primary">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-primary shrink-0">
                     Lamstone Pharmacy Chain
                   </h3>
-                  <p className="text-sm sm:text-base leading-relaxed text-charcoal-muted font-light">
+                  <p className="text-sm sm:text-base leading-relaxed text-charcoal-muted font-light flex-1">
                     Lamstone is a rapidly expanding network of premium pharmacies across Kerala, committed to delivering authentic medicines, expert healthcare guidance, and a comprehensive range of wellness and personal care products. With a vision to redefine pharmaceutical retail excellence, Lamstone is strategically acquiring and integrating 500+ pharmacies across the state, building a trusted healthcare ecosystem that combines accessibility, innovation, and customer-centric care under one unified brand experience.
                   </p>
                 </div>
-                <div className="pt-8">
+                <div className="pt-8 mt-auto border-t border-border-subtle/50">
                   <Link
                     href="/pharmacy-chain"
                     className="group/link inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-dark transition-colors"
@@ -146,11 +146,11 @@ export default function HomePage() {
             </MotionReveal>
 
             {/* Card 2 - Cosmetics Division */}
-            <MotionReveal delay={220} direction="up">
-              <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-white p-8 sm:p-10 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 ease-out">
-                <div className="space-y-6">
+            <MotionReveal delay={220} direction="up" className="h-full flex flex-col">
+              <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-white p-8 sm:p-10 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 ease-out h-full w-full">
+                <div className="space-y-6 flex-1 flex flex-col">
                   {/* Real Live Site Image */}
-                  <div className="overflow-hidden rounded-2xl aspect-video relative bg-ivory">
+                  <div className="overflow-hidden rounded-2xl aspect-video relative bg-ivory shrink-0">
                     <Image
                       src="/images/home/cosmetics.png"
                       alt="Lamstone Cosmetics Division branded personal care and beauty collection"
@@ -160,18 +160,18 @@ export default function HomePage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent" />
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-dark">
+                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-dark shrink-0">
                     <Sparkles className="h-4 w-4" />
                     <span>Personal Care &amp; Beauty</span>
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-primary">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-primary shrink-0">
                     Cosmetics Division
                   </h3>
-                  <p className="text-sm sm:text-base leading-relaxed text-charcoal-muted font-light">
+                  <p className="text-sm sm:text-base leading-relaxed text-charcoal-muted font-light flex-1">
                     Lamstone is a leading distributor of globally renowned beauty and personal care brands, including Dove, Pears, Mamaearth, Lotus, Jovees, Johnson &amp; Johnson, Cetaphil, Pantene, Ponds, Head &amp; Shoulders, and Sebamed. Committed to authenticity and quality, we supply high-demand cosmetic products across the region, catering to modern beauty, wellness, and personal care needs.
                   </p>
                 </div>
-                <div className="pt-8">
+                <div className="pt-8 mt-auto border-t border-border-subtle/50">
                   <Link
                     href="/cosmetics"
                     className="group/link inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-dark transition-colors"

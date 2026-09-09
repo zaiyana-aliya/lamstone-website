@@ -103,16 +103,18 @@ export default function PharmacyChainPage() {
                 </p>
               </MotionReveal>
               <MotionReveal delay={440} direction="right">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 items-stretch">
                   {[
                     { icon: ShieldCheck, title: "100% Authentic", desc: "Verified pharmaceutical sourcing & safety." },
                     { icon: Building2, title: "500+ Goal", desc: "Expanding across all 14 districts." },
                     { icon: Clock, title: "Expert Care", desc: "Registered pharmacists for consultations." },
                   ].map(({ icon: Icon, title, desc }, i) => (
-                    <div key={i} className="group rounded-xl border border-border-subtle p-5 bg-ivory hover:shadow-md hover:scale-[1.03] transition-all duration-300">
-                      <Icon className="h-6 w-6 text-gold mb-2" />
-                      <h4 className="font-serif text-lg font-semibold text-primary">{title}</h4>
-                      <p className="text-xs text-charcoal-muted mt-1">{desc}</p>
+                    <div key={i} className="group rounded-xl border border-border-subtle p-5 bg-ivory hover:shadow-md hover:scale-[1.03] transition-all duration-300 h-full flex flex-col justify-between">
+                      <div>
+                        <Icon className="h-6 w-6 text-gold mb-2" />
+                        <h4 className="font-serif text-lg font-semibold text-primary">{title}</h4>
+                        <p className="text-xs text-charcoal-muted mt-1">{desc}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -228,12 +230,12 @@ export default function PharmacyChainPage() {
           </MotionReveal>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {filteredLocations.map((pharmacy, idx) => (
-              <MotionReveal key={idx} delay={idx * 80} direction="up">
-                <div className="group flex flex-col justify-between rounded-xl border border-border-subtle bg-white p-6 shadow-2xs hover:shadow-xl hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
+              <MotionReveal key={idx} delay={idx * 80} direction="up" className="h-full flex flex-col">
+                <div className="group flex flex-col justify-between rounded-xl border border-border-subtle bg-white p-6 shadow-2xs hover:shadow-xl hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 h-full w-full">
+                  <div className="space-y-4 flex-1 flex flex-col">
+                    <div className="flex items-center justify-between shrink-0">
                       <span className="inline-flex items-center rounded-md bg-gold/15 px-2.5 py-0.5 text-[11px] font-semibold text-gold-dark">
                         {pharmacy.district}
                       </span>
@@ -241,7 +243,7 @@ export default function PharmacyChainPage() {
                         <MapPin className="h-3.5 w-3.5" />
                       </span>
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="font-serif text-xl font-medium text-primary">{pharmacy.name}</h3>
                       <p className="text-sm text-charcoal-muted font-light mt-2 flex items-center gap-2">
                         <Image
@@ -255,7 +257,7 @@ export default function PharmacyChainPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-border-subtle flex items-center justify-between text-xs text-primary font-medium">
+                  <div className="mt-6 pt-4 border-t border-border-subtle flex items-center justify-between text-xs text-primary font-medium shrink-0">
                     <span className="text-emerald-700 font-semibold flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
                       Open &amp; Dispensing

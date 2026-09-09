@@ -96,17 +96,17 @@ export default function InvestPage() {
             </div>
           </MotionReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             {VALUE_PROPS.map(({ Icon, title, description }, i) => (
-              <MotionReveal key={i} delay={i * 140} direction="up">
-                <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-ivory p-8 sm:p-10 shadow-xs hover:shadow-xl hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300">
-                  <div className="space-y-5">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-gold transition-all duration-300 shadow-2xs">
+              <MotionReveal key={i} delay={i * 140} direction="up" className="h-full flex flex-col">
+                <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-ivory p-8 sm:p-10 shadow-xs hover:shadow-xl hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 h-full w-full">
+                  <div className="space-y-5 flex-1 flex flex-col">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-gold transition-all duration-300 shadow-2xs shrink-0">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <h3 className="font-serif text-xl sm:text-2xl font-medium text-primary">{title}</h3>
+                    <h3 className="font-serif text-xl sm:text-2xl font-medium text-primary shrink-0">{title}</h3>
                     <p
-                      className="text-sm sm:text-base text-charcoal-muted font-light leading-relaxed"
+                      className="text-sm sm:text-base text-charcoal-muted font-light leading-relaxed flex-1"
                       dangerouslySetInnerHTML={{ __html: description }}
                     />
                   </div>

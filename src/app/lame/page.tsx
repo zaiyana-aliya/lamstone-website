@@ -188,13 +188,13 @@ export default function LamePage() {
           </MotionReveal>
 
           {/* 4 Product Cards — extra breathing room, floating shadow */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 items-stretch">
             {SIGNATURE_PRODUCTS.map((product, idx) => (
-              <MotionReveal key={idx} delay={idx * 150} direction="up">
-                <div className="group flex flex-col justify-between rounded-2xl border border-lame-border/60 bg-white p-7 sm:p-9 lame-floating-shadow hover:scale-[1.03] hover:-translate-y-2.5 transition-all duration-500 ease-out">
-                  <div className="space-y-6">
+              <MotionReveal key={idx} delay={idx * 150} direction="up" className="h-full flex flex-col">
+                <div className="group flex flex-col justify-between rounded-2xl border border-lame-border/60 bg-white p-7 sm:p-9 lame-floating-shadow hover:scale-[1.03] hover:-translate-y-2.5 transition-all duration-500 ease-out h-full w-full">
+                  <div className="space-y-6 flex-1 flex flex-col">
                     {/* Product Image — larger, floating shadow effect */}
-                    <div className="overflow-hidden rounded-2xl lame-floating-shadow aspect-square relative group/img bg-lame-bg/50">
+                    <div className="overflow-hidden rounded-2xl lame-floating-shadow aspect-square relative group/img bg-lame-bg/50 shrink-0">
                       <Image
                         src={product.imageUrl}
                         alt={product.imageAlt}
@@ -205,7 +205,7 @@ export default function LamePage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-lame-charcoal/10 via-transparent to-transparent" />
                     </div>
 
-                    <div>
+                    <div className="shrink-0">
                       <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lame-rose-dark block">
                         {product.category}
                       </span>
@@ -217,7 +217,7 @@ export default function LamePage() {
                       )}
                     </div>
 
-                    <ul className="space-y-2.5 border-t border-lame-border/60 pt-4 text-xs text-neutral-600 font-light">
+                    <ul className="space-y-2.5 border-t border-lame-border/60 pt-4 text-xs text-neutral-600 font-light flex-1">
                       {product.highlights.map((item, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span className="h-1.5 w-1.5 rounded-full bg-lame-rose mt-1.5 shrink-0" />
@@ -227,7 +227,7 @@ export default function LamePage() {
                     </ul>
                   </div>
 
-                  <div className="pt-7 mt-6 border-t border-lame-border/50 flex flex-col items-center gap-2">
+                  <div className="pt-7 mt-auto border-t border-lame-border/50 flex flex-col items-center gap-2 shrink-0">
                     {product.isLive && product.storeUrl ? (
                       <a
                         href={product.storeUrl}

@@ -149,13 +149,13 @@ export default function CosmeticsPage() {
             </div>
           </MotionReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             {CATEGORIES.map((category, idx) => (
-              <MotionReveal key={idx} delay={idx * 130} direction="up">
-                <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-white p-8 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
-                  <div className="space-y-6">
+              <MotionReveal key={idx} delay={idx * 130} direction="up" className="h-full flex flex-col">
+                <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-white p-8 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 h-full w-full">
+                  <div className="space-y-6 flex-1 flex flex-col">
                     {/* Premium Unsplash category image */}
-                    <div className="overflow-hidden rounded-xl aspect-16/10 relative">
+                    <div className="overflow-hidden rounded-xl aspect-16/10 relative shrink-0">
                       <Image
                         src={category.imageUrl}
                         alt={category.imageAlt}
@@ -165,7 +165,7 @@ export default function CosmeticsPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent" />
                     </div>
-                    <div>
+                    <div className="shrink-0">
                       <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark">
                         Category 0{idx + 1}
                       </span>
@@ -174,8 +174,8 @@ export default function CosmeticsPage() {
                         {category.subtitle}
                       </p>
                     </div>
-                    <p className="text-sm text-charcoal-muted font-light leading-relaxed">{category.description}</p>
-                    <ul className="space-y-2.5 pt-2 border-t border-border-subtle/80">
+                    <p className="text-sm text-charcoal-muted font-light leading-relaxed flex-1">{category.description}</p>
+                    <ul className="space-y-2.5 pt-2 border-t border-border-subtle/80 shrink-0">
                       {category.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-charcoal">
                           <Check className="h-4 w-4 shrink-0 text-gold-dark mt-0.5" />
@@ -184,7 +184,7 @@ export default function CosmeticsPage() {
                       ))}
                     </ul>
                   </div>
-                  <div className="pt-8 mt-6 border-t border-border-subtle/60">
+                  <div className="pt-8 mt-auto border-t border-border-subtle/60 shrink-0">
                     <CTAButton href="/contact" variant="outline" size="sm" className="w-full justify-center">
                       Inquire Distribution
                     </CTAButton>

@@ -118,44 +118,48 @@ export default function AboutPage() {
       {/* 3. Vision & Mission Section — Icon-style graphic per section */}
       <section className="border-t border-border-subtle bg-cream py-24 sm:py-32 px-6 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            <MotionReveal delay={100} direction="up">
-              <div className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-white p-8 sm:p-12 space-y-6 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
-                <div className="pointer-events-none absolute -right-10 -bottom-10 h-36 w-36 rounded-full bg-gold/10 blur-2xl group-hover:bg-gold/20 transition-all duration-500" />
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/15 text-gold-dark group-hover:bg-gold/25 group-hover:scale-105 transition-all shadow-2xs">
-                    <Eye className="h-7 w-7" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+            <MotionReveal delay={100} direction="up" className="h-full flex flex-col">
+              <div className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-white p-8 sm:p-12 space-y-6 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 h-full w-full flex flex-col justify-between">
+                <div>
+                  <div className="pointer-events-none absolute -right-10 -bottom-10 h-36 w-36 rounded-full bg-gold/10 blur-2xl group-hover:bg-gold/20 transition-all duration-500" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/15 text-gold-dark group-hover:bg-gold/25 group-hover:scale-105 transition-all shadow-2xs">
+                      <Eye className="h-7 w-7" />
+                    </div>
+                    <span className="text-xs uppercase tracking-widest font-semibold text-gold-dark">
+                      Guiding Light
+                    </span>
                   </div>
-                  <span className="text-xs uppercase tracking-widest font-semibold text-gold-dark">
-                    Guiding Light
-                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-primary mt-6">
+                    Our Vision
+                  </h3>
+                  <p className="text-base sm:text-lg text-charcoal-muted font-light leading-relaxed mt-4">
+                    To be the most trusted healthcare and beauty destination, empowering individuals to live healthier, more confident lives.
+                  </p>
                 </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-medium text-primary">
-                  Our Vision
-                </h3>
-                <p className="text-base sm:text-lg text-charcoal-muted font-light leading-relaxed">
-                  To be the most trusted healthcare and beauty destination, empowering individuals to live healthier, more confident lives.
-                </p>
               </div>
             </MotionReveal>
 
-            <MotionReveal delay={220} direction="up">
-              <div className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-white p-8 sm:p-12 space-y-6 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
-                <div className="pointer-events-none absolute -right-10 -bottom-10 h-36 w-36 rounded-full bg-primary/10 blur-2xl group-hover:bg-primary/20 transition-all duration-500" />
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-gold group-hover:bg-primary-light group-hover:scale-105 transition-all shadow-2xs">
-                    <Target className="h-7 w-7" />
+            <MotionReveal delay={220} direction="up" className="h-full flex flex-col">
+              <div className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-white p-8 sm:p-12 space-y-6 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 h-full w-full flex flex-col justify-between">
+                <div>
+                  <div className="pointer-events-none absolute -right-10 -bottom-10 h-36 w-36 rounded-full bg-primary/10 blur-2xl group-hover:bg-primary/20 transition-all duration-500" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-gold group-hover:bg-primary-light group-hover:scale-105 transition-all shadow-2xs">
+                      <Target className="h-7 w-7" />
+                    </div>
+                    <span className="text-xs uppercase tracking-widest font-semibold text-gold-dark">
+                      Operational Core
+                    </span>
                   </div>
-                  <span className="text-xs uppercase tracking-widest font-semibold text-gold-dark">
-                    Operational Core
-                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-primary mt-6">
+                    Our Mission
+                  </h3>
+                  <p className="text-base sm:text-lg text-charcoal-muted font-light leading-relaxed mt-4">
+                    To provide unparalleled access to genuine medicines, expert care, and scientifically-backed beauty products through continuous innovation.
+                  </p>
                 </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-medium text-primary">
-                  Our Mission
-                </h3>
-                <p className="text-base sm:text-lg text-charcoal-muted font-light leading-relaxed">
-                  To provide unparalleled access to genuine medicines, expert care, and scientifically-backed beauty products through continuous innovation.
-                </p>
               </div>
             </MotionReveal>
           </div>
@@ -247,14 +251,14 @@ export default function AboutPage() {
             {/* Horizontal Connecting Line for Desktop */}
             <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-gold/20 via-gold to-gold/20 z-0" />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 items-stretch">
               {ROADMAP_STEPS.map((step, index) => {
                 const StepIcon = step.icon;
                 return (
-                  <MotionReveal key={index} delay={index * 130} direction="up">
-                    <div className="group relative flex flex-col justify-between rounded-2xl border border-border-subtle bg-ivory p-6 sm:p-8 shadow-2xs hover:shadow-xl hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300">
-                      <div className="space-y-4">
-                        <div className="flex items-center justify-between">
+                  <MotionReveal key={index} delay={index * 130} direction="up" className="h-full flex flex-col">
+                    <div className="group relative flex flex-col justify-between rounded-2xl border border-border-subtle bg-ivory p-6 sm:p-8 shadow-2xs hover:shadow-xl hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 h-full w-full">
+                      <div className="space-y-4 flex-1 flex flex-col">
+                        <div className="flex items-center justify-between shrink-0">
                           <div className="flex items-center gap-3">
                             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-gold shadow-xs group-hover:bg-primary-light group-hover:scale-110 transition-all duration-300">
                               <StepIcon className="h-5 w-5" />
@@ -267,14 +271,14 @@ export default function AboutPage() {
                             0{index + 1}
                           </span>
                         </div>
-                        <h3 className="font-serif text-xl font-medium text-primary pt-1">
+                        <h3 className="font-serif text-xl font-medium text-primary pt-1 shrink-0">
                           {step.title}
                         </h3>
-                        <p className="text-sm text-charcoal-muted font-light leading-relaxed">
+                        <p className="text-sm text-charcoal-muted font-light leading-relaxed flex-1">
                           {step.description}
                         </p>
                       </div>
-                      <div className="mt-6 pt-4 border-t border-border-subtle/70 flex items-center justify-between text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
+                      <div className="mt-6 pt-4 border-t border-border-subtle/70 flex items-center justify-between text-[11px] uppercase tracking-wider text-neutral-400 font-medium shrink-0">
                         <span>Milestone 0{index + 1}</span>
                         <CheckCircle2 className="h-3.5 w-3.5 text-gold" />
                       </div>
