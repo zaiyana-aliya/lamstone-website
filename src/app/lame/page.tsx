@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import MotionReveal from "@/components/MotionReveal";
-import { ShieldCheck, Heart, ExternalLink } from "lucide-react";
+import LameNotifySection from "@/components/LameNotifySection";
+import { ShieldCheck, Heart, ExternalLink, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Lamé — Haute Dermocosmetics & Skincare",
@@ -10,13 +11,25 @@ export const metadata: Metadata = {
     "Born from pharmaceutical expertise, Lamé bridges clinical efficacy and luxurious self-care with rigorously formulated skincare and fragrances.",
 };
 
-const SIGNATURE_PRODUCTS = [
+interface LameProduct {
+  category: string;
+  name: string;
+  detail?: string;
+  highlights: string[];
+  imageUrl: string;
+  imageAlt: string;
+  isLive: boolean;
+  storeUrl?: string;
+}
+
+const SIGNATURE_PRODUCTS: LameProduct[] = [
   {
     category: "Cleanser",
     name: "2% Salicylic Acid Gel Cleanser",
     highlights: ["Exfoliate dead skin", "Prevent acne formation"],
     imageUrl: "/images/products/facewash.jpeg",
     imageAlt: "Lamé 2% Salicylic Acid Gel Cleanser",
+    isLive: false,
   },
   {
     category: "Body Care",
@@ -24,6 +37,7 @@ const SIGNATURE_PRODUCTS = [
     highlights: ["Gentle Exfoliation & Pollution Removal", "For Smooth, Refreshed skin"],
     imageUrl: "/images/products/scrub.jpeg",
     imageAlt: "Lamé Derma Polish Body Scrub",
+    isLive: false,
   },
   {
     category: "Fragrance",
@@ -32,6 +46,7 @@ const SIGNATURE_PRODUCTS = [
     highlights: ["Long-lasting sensorial profile", "Artisanal fine fragrance blend"],
     imageUrl: "/images/products/sugardays.jpeg",
     imageAlt: "Lamé Sugar DAYS Eau de Parfum",
+    isLive: false,
   },
   {
     category: "Moisturizer",
@@ -40,6 +55,7 @@ const SIGNATURE_PRODUCTS = [
     highlights: ["Barrier Repair & Deep Hydration", "Non-comedogenic clinical hydration"],
     imageUrl: "/images/products/moisturizer.jpeg",
     imageAlt: "Lamé DermaBarrier Gel Moisturizer",
+    isLive: false,
   },
 ];
 
@@ -211,20 +227,44 @@ export default function LamePage() {
                     </ul>
                   </div>
 
-                  <div className="pt-7 mt-6 border-t border-lame-border/50">
-                    <CTAButton
-                      href="/contact"
-                      variant="outline"
-                      size="sm"
-                      className="w-full justify-center border-lame-rose/40 text-lame-charcoal hover:bg-lame-rose/10 hover:border-lame-rose"
-                    >
-                      Discover More
-                    </CTAButton>
+                  <div className="pt-7 mt-6 border-t border-lame-border/50 flex flex-col items-center gap-2">
+                    {product.isLive && product.storeUrl ? (
+                      <a
+                        href={product.storeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider bg-lame-rose text-white hover:bg-lame-rose-dark transition-all shadow-xs"
+                      >
+                        <span>Shop Now</span>
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    ) : (
+                      <>
+                        <button
+                          type="button"
+                          disabled
+                          aria-disabled="true"
+                          className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider bg-neutral-100/90 text-neutral-400 border border-neutral-200/80 cursor-not-allowed select-none flex items-center justify-center gap-2 transition-all shadow-none"
+                        >
+                          <Clock className="w-3.5 h-3.5 text-neutral-400" />
+                          <span>Coming Soon</span>
+                        </button>
+                        <a
+                          href="#notify"
+                          className="text-[11px] text-lame-rose-dark hover:text-lame-charcoal font-medium transition-colors hover:underline pt-0.5"
+                        >
+                          Notify me on launch &rarr;
+                        </a>
+                      </>
+                    )}
                   </div>
                 </div>
               </MotionReveal>
             ))}
           </div>
+
+          {/* Launch Notification Form */}
+          <LameNotifySection />
         </div>
       </section>
 
