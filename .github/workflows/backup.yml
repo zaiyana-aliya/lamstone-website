@@ -1,0 +1,43 @@
+
+name: Automated Daily Supabase Backup
+
+on:
+  schedule:
+    # Runs every day at 02:00 AM IST (20:30 UTC)
+    - cron: '30 20 * * *'
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  backup:
+    name: Supabase PostgreSQL Backup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL Client Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Execute pg_dump
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          if [ -z "$SUPABASE_DB_URL" ]; then
+            echo "SUPABASE_DB_URL secret is not set. Skipping dump."
+            exit 0
+          fi
+          TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+          mkdir -p backups
+          pg_dump "$SUPABASE_DB_URL" --no-owner --no-acl --clean --if-exists > "backups/supabase_backup_${TIMESTAMP}.sql"
+          gzip "backups/supabase_backup_${TIMESTAMP}.sql"
+          echo "Backup completed: backups/supabase_backup_${TIMESTAMP}.sql.gz"
+
+      - name: Upload Backup Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: supabase-daily-backup
+          path: backups/*.sql.gz
+          retention-days: 30

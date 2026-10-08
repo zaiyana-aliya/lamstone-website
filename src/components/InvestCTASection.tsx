@@ -2,8 +2,9 @@
 
 import React, { useEffect, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
-import CTAButton from "./CTAButton";
+import Link from "next/link";
 import MotionReveal from "./MotionReveal";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const subscribePointerMedia = (callback: () => void) => {
   if (typeof window === "undefined") return () => {};
@@ -19,8 +20,65 @@ const getPointerSnapshot = () => {
 
 const getServerSnapshot = () => false;
 
+interface InvestBannerData {
+  eyebrow_label: string;
+  heading: string;
+  description: string;
+  image_url: string;
+  primary_cta_label: string;
+  primary_cta_url: string;
+  secondary_cta_label?: string | null;
+  is_active: boolean;
+}
+
+const DEFAULT_INVEST_DATA: InvestBannerData = {
+  eyebrow_label: "Strategic Investment",
+  heading: "Invest in Growth with Lamstone",
+  description:
+    "Join our rapidly expanding pharmacy chain and beauty ecosystem. We offer transparent, secure, and lucrative partnership models for forward-thinking investors.",
+  image_url: "/images/invest/invest-corporate-skyline-clean.jpg",
+  primary_cta_label: "Talk to Us",
+  primary_cta_url: "/contact",
+  secondary_cta_label: "500+ Target Pharmacies · 14 Districts · 9+ Brand Partners",
+  is_active: true,
+};
+
 export default function InvestCTASection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [data, setData] = React.useState<InvestBannerData>(DEFAULT_INVEST_DATA);
+
+  React.useEffect(() => {
+    let isMounted = true;
+    async function loadData() {
+      try {
+        const res = await fetch("/api/home-promo-sections", { cache: "no-store" });
+        if (!res.ok) return;
+        const json = await res.json();
+        if (isMounted && Array.isArray(json.sections)) {
+          const row = json.sections.find((s: any) => s.section_key === "invest_banner");
+          if (row) {
+            setData({
+              eyebrow_label: row.eyebrow_label || DEFAULT_INVEST_DATA.eyebrow_label,
+              heading: row.heading || DEFAULT_INVEST_DATA.heading,
+              description: row.description || DEFAULT_INVEST_DATA.description,
+              image_url: row.image_url || DEFAULT_INVEST_DATA.image_url,
+              primary_cta_label: row.primary_cta_label || DEFAULT_INVEST_DATA.primary_cta_label,
+              primary_cta_url: row.primary_cta_url || DEFAULT_INVEST_DATA.primary_cta_url,
+              secondary_cta_label: row.secondary_cta_label || DEFAULT_INVEST_DATA.secondary_cta_label,
+              is_active: row.is_active ?? true,
+            });
+          }
+        }
+      } catch {
+        // keep fallback
+      }
+    }
+    loadData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const hasPointer = useSyncExternalStore(
     subscribePointerMedia,
     getPointerSnapshot,
@@ -114,84 +172,102 @@ export default function InvestCTASection() {
   // When hasPointer is false (touch device or mobile), enable auto-drift keyframe classes
   const isTouchDevice = hasPointer === false;
 
+  if (!data.is_active) return null;
+
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-ivory pt-10 sm:pt-14 pb-10 sm:pb-12 border-t border-border-subtle"
+      className="relative overflow-hidden bg-transparent pt-10 sm:pt-14 pb-12 sm:pb-16 border-t border-[var(--border)]"
     >
-      {/* Decorative Parallax / Auto-drift Background Shapes */}
-      {/* 1. Large Brand Green Ambient Glow / Blob (Top Left to Center) */}
-      <div
-        ref={shape1Ref}
-        aria-hidden="true"
-        className={`pointer-events-none absolute -top-16 -left-16 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-primary/8 blur-3xl will-change-transform z-0 ${
-          isTouchDevice ? "animate-drift-blob1" : ""
-        }`}
-      />
 
-      {/* 2. Warm Gold Subtle Glow / Blob (Bottom Right) */}
-      <div
-        ref={shape2Ref}
-        aria-hidden="true"
-        className={`pointer-events-none absolute -bottom-20 -right-16 w-88 h-88 sm:w-[420px] sm:h-[420px] rounded-full bg-gold/12 blur-3xl will-change-transform z-0 ${
-          isTouchDevice ? "animate-drift-blob2" : ""
-        }`}
-      />
-
-      {/* 3. Soft Brand Green & Gold Floating Motif (Center / Left Behind Card) */}
-      <div
-        ref={shape3Ref}
-        aria-hidden="true"
-        className={`pointer-events-none absolute top-1/3 left-1/4 w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-gradient-to-tr from-primary/5 via-gold/8 to-transparent blur-2xl will-change-transform z-0 ${
-          isTouchDevice ? "animate-drift-blob3" : ""
-        }`}
-      >
-        {/* Subtle decorative leaf watermark inside blob */}
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="absolute inset-0 m-auto w-40 h-40 text-primary/10 select-none opacity-60"
-        >
-          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-        </svg>
-      </div>
-
-      {/* Main Content Container (z-10 ensures content stays 100% stable, unmoving, and accessible) */}
-      <div className="relative mx-auto max-w-5xl px-6 sm:px-8 lg:px-12 z-10 w-full">
+      {/* Main Content Container */}
+      <div className="relative mx-auto max-w-7xl w-full px-6 sm:px-8 lg:px-12 z-10">
         <MotionReveal direction="none">
-          <div className="rounded-3xl border border-border-subtle bg-white overflow-hidden shadow-xs hover:shadow-xl transition-all duration-500">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center p-6 sm:p-9 lg:p-10">
-              <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold-dark text-xs font-semibold tracking-wider uppercase">
-                  Strategic Investment
+          <div className="relative rounded-3xl border border-[var(--border)] bg-gradient-to-br from-white via-[var(--surface)] to-amber-50/20 overflow-hidden shadow-[0_12px_44px_-8px_rgba(14,34,68,0.12),0_4px_16px_-2px_rgba(198,161,91,0.16)] hover:shadow-[0_24px_56px_-10px_rgba(14,34,68,0.22),0_8px_24px_-4px_rgba(198,161,91,0.25)] hover:-translate-y-1 transition-all duration-500">
+            {/* 4px Gradient Top Border (Gold to Deep Gold) matching Core Divisions */}
+            <div className="absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-[#D4AF37] via-[#F0D58C] to-[#B38728] z-30" />
+
+            {/* Subtle background texture: faint diagonal lines at 3.5% opacity */}
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none opacity-[0.035]">
+              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="invest-diagonal-pattern" width="32" height="32" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="0" x2="0" y2="32" stroke="#0E2244" strokeWidth="2" />
+                    <line x1="16" y1="0" x2="16" y2="32" stroke="#C6A15B" strokeWidth="1.5" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#invest-diagonal-pattern)" />
+              </svg>
+            </div>
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-8 sm:p-12 lg:p-14">
+              <div className="lg:col-span-6 xl:col-span-7 space-y-5 sm:space-y-6 text-left">
+                {/* Filled soft-gold badge with visual weight */}
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#EED596] via-[#E2C376] to-[#D4AF37] text-[#543E08] border border-[#C6A15B]/50 shadow-[0_2px_10px_rgba(198,161,91,0.28)] text-[11px] sm:text-xs font-bold tracking-widest uppercase select-none">
+                  <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#543E08]" />
+                  <span>{data.eyebrow_label}</span>
                 </div>
-                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-primary tracking-tight">
-                  Invest in Growth with Lamstone
-                </h2>
-                <p className="text-sm sm:text-base text-charcoal-muted leading-relaxed font-light">
-                  Join our rapidly expanding pharmacy chain and beauty ecosystem. We offer transparent, secure, and lucrative partnership models for forward-thinking investors.
+
+                {/* Heading with 3.5px gold accent line and serif font */}
+                <div className="space-y-3">
+                  <span className="block h-[3.5px] w-12 bg-gradient-to-r from-[#D4AF37] to-[#B38728] rounded-full" />
+                  <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[var(--heading)] tracking-tight leading-tight">
+                    {data.heading}
+                  </h2>
+                </div>
+
+                <p className="text-sm sm:text-base text-[var(--body)] leading-relaxed font-light">
+                  {data.description}
                 </p>
-                <div className="pt-1">
-                  <CTAButton href="/contact" variant="primary" size="md">
-                    Talk to Us
-                  </CTAButton>
-                </div>
+
+                {data.primary_cta_label && data.primary_cta_url && (
+                  <div className="pt-2 space-y-4">
+                    <Link
+                      href={data.primary_cta_url}
+                      className="group/btn inline-flex items-center justify-center gap-3 rounded-full px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide text-white bg-gradient-to-r from-[#E0BE73] via-[#C9A24B] to-[#AE872E] border border-[#F0D58C]/40 shadow-[0_6px_22px_rgba(201,162,75,0.4),inset_0_1px_0_0_rgba(255,255,255,0.4)] hover:shadow-[0_12px_32px_rgba(201,162,75,0.55),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0 active:scale-[0.98] transition-all duration-300 cursor-pointer"
+                    >
+                      <span>{data.primary_cta_label}</span>
+                      <ArrowRight className="h-4 w-4 stroke-[2.5] text-white transition-transform duration-300 group-hover/btn:translate-x-1.5" />
+                    </Link>
+
+                    {/* Small caps trust & credibility line */}
+                    {data.secondary_cta_label && (
+                      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs uppercase tracking-wider text-[var(--muted)] font-medium select-none">
+                        {data.secondary_cta_label.split(/[·•]/).map((item, idx, arr) => (
+                          <React.Fragment key={idx}>
+                            <span className="font-semibold text-[var(--heading)]">{item.trim()}</span>
+                            {idx < arr.length - 1 && <span className="text-[#C6A15B] font-bold">·</span>}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
-              <div className="lg:col-span-5">
-                <div className="relative overflow-hidden rounded-2xl aspect-16/10 sm:aspect-16/10 lg:aspect-[4/3] max-h-56 sm:max-h-64 lg:max-h-60 shadow-md group">
+
+              {/* Skyline Photo as a proper visual with navy-to-gold gradient overlay */}
+              <div className="lg:col-span-6 xl:col-span-5 w-full">
+                <div className="relative overflow-hidden rounded-2xl aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] min-h-[260px] sm:min-h-[300px] lg:min-h-[330px] shadow-[0_20px_40px_-12px_rgba(7,18,36,0.32)] border border-[var(--border)] group">
                   <Image
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85"
-                    alt="Modern upward architectural geometric perspective representing corporate growth"
+                    src={data.image_url && !data.image_url.includes("unsplash") ? data.image_url : "/images/invest/invest-corporate-skyline-clean.jpg"}
+                    alt={data.heading}
                     fill
-                    className="object-cover object-center group-hover:scale-[1.05] transition-transform duration-700 ease-out"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent" />
+                  {/* Subtle brand color-grading overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0E2244]/75 via-[#071224]/30 to-[#C6A15B]/25 pointer-events-none mix-blend-multiply" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071224]/80 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Gradient caption bar (navy to transparent) blending into the photo */}
+                  <div className="absolute inset-x-0 bottom-0 z-10 px-5 py-4 bg-gradient-to-t from-[#071224]/95 via-[#071224]/80 to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-white">
+                    <span className="font-serif tracking-wide text-[#F0D58C] text-xs sm:text-sm font-semibold drop-shadow-sm">
+                      500+ Pharmacy Network Growth
+                    </span>
+                    <span className="text-white/80 text-[10px] sm:text-[10.5px] uppercase tracking-wider font-mono drop-shadow-sm">
+                      Kerala &amp; South India
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

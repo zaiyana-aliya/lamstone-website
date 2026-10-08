@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import CTAButton from "@/components/CTAButton";
-import HeroBanner from "@/components/HeroBanner";
+import CosmeticsHeroSection from "@/components/cosmetics/CosmeticsHeroSection";
+import CosmeticsBrandsSection from "@/components/cosmetics/CosmeticsBrandsSection";
+import CosmeticsCategoriesSection from "@/components/cosmetics/CosmeticsCategoriesSection";
+import CosmeticsCtaSection from "@/components/cosmetics/CosmeticsCtaSection";
+import CosmeticsVisualBand from "@/components/cosmetics/CosmeticsVisualBand";
 import MotionReveal from "@/components/MotionReveal";
-import { Check } from "lucide-react";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Cosmetics Division — Lamstone HealthCare",
@@ -11,209 +12,74 @@ export const metadata: Metadata = {
     "Lamstone Cosmetic Division is dedicated to bringing premium skincare, beauty, and personal care solutions to consumers through a robust distribution network.",
 };
 
-const BRANDS = [
-  { name: "Lotus", tag: "Botanical & Natural", logo: "/images/brands/lotus.png" },
-  { name: "Mamaearth", tag: "Toxin-Free Beauty", logo: "/images/brands/mamaearth.png" },
-  { name: "Ponds", tag: "Classic Skincare", logo: "/images/brands/ponds.png" },
-  { name: "Cetaphil", tag: "Dermatologist Recommended", logo: "/images/brands/cetaphil.png" },
-  { name: "Lakmé", tag: "Iconic Color & Care", logo: "/images/brands/lakme.jpg" },
-  { name: "Dove", tag: "Nourishing Care", logo: "/images/brands/dove.png" },
-  { name: "Jovees", tag: "Herbal Formulations", logo: "/images/brands/jovees.jpg" },
-  { name: "Sebamed", tag: "pH 5.5 Clinical Skincare", logo: "/images/brands/sebamed.jpg" },
-  { name: "Femisafe", tag: "Intimate & Personal Wellness", logo: "/images/brands/femisafe.jpg" },
-];
-
-const CATEGORIES = [
-  {
-    title: "Skincare",
-    subtitle: "Facial Care & Dermatological Formulations",
-    description: "Engineered to cleanse, nourish, protect, and restore skin health across all skin types.",
-    items: [
-      "Deep Cleanse & Purifying Cleansers",
-      "Barrier Repair & Hydration Creams",
-      "Advanced Serums & Targeted Formulations",
-      "Clinical Sunscreens & UV Protection",
-      "Rejuvenating Night Creams & Treatments",
-    ],
-    imageUrl: "/images/cosmetics/category-skincare.jpg",
-    imageAlt: "Lamstone Skincare collection featuring dermatological formulations",
-  },
-  {
-    title: "Personal Care",
-    subtitle: "Daily Wellness & Body Essentials",
-    description: "Everyday hygienic and nourishing solutions sourced from internationally trusted brands.",
-    items: [
-      "Nourishing Shampoos & Conditioners",
-      "Botanical & Antibacterial Body Washes",
-      "Gentle Hydrating Soaps & Bath Bars",
-      "Complete Oral Hygiene & Dental Care",
-      "Therapeutic Hair Oils & Scalp Tonics",
-    ],
-    imageUrl: "/images/cosmetics/category-personal-care.png",
-    imageAlt: "Lamstone Personal Care collection featuring daily body wellness essentials",
-  },
-  {
-    title: "Healthcare Cosmetics",
-    subtitle: "Medicated & Therapeutic Topicals",
-    description: "Targeted formulations bridging cosmetic aesthetics with clinical dermatological efficacy.",
-    items: [
-      "Clinical Dermatological Ointments",
-      "Medicated Hypoallergenic Soaps",
-      "Intensive Barrier & Eczema Creams",
-      "Therapeutic Scalp & Skin Treatments",
-      "Post-Procedure Recovery Topicals",
-    ],
-    imageUrl: "/images/cosmetics/category-healthcare-cosmetics.png",
-    imageAlt: "Lamstone Healthcare Cosmetics therapeutic topicals and medicated skincare",
-  },
-];
-
 export default function CosmeticsPage() {
   return (
-    <div className="flex flex-col w-full">
-      {/* 1. Cinematic Hero — Flat-lay of skincare & beauty products */}
-      <HeroBanner
-        eyebrow="Distribution & Retail"
-        title="Cosmetics Division"
-        description="Lamstone Cosmetic Division is dedicated to bringing premium skincare, beauty, and personal care solutions to consumers through a robust and expanding distribution network."
-        imageUrl="/images/cosmetics/desktop.png"
-        imageAlt="Lamstone Cosmetics Division collection showcasing global personal care products"
-        theme="green"
-        heightClassName="min-h-[70vh]"
-      >
-        <CTAButton href="/contact" variant="primary">
-          Contact Distribution
-        </CTAButton>
-      </HeroBanner>
+    <div data-theme="cosmetics" className="flex flex-col w-full bg-[var(--bg)] text-[var(--body)]">
+      {/* 1. Dynamic Cosmetics Division Hero */}
+      <CosmeticsHeroSection />
 
       {/* 2. Multi-Brand Portfolio — 9 Recognized Global Brands */}
-      <section className="bg-white py-24 sm:py-32 px-6 sm:px-8 lg:px-12 border-b border-border-subtle">
-        <div className="mx-auto max-w-7xl space-y-12">
+      <section className="relative bg-[#B31942] py-24 sm:py-28 lg:py-32 border-t border-[#0F2A4A]/10 border-b border-[#0F2A4A]/10">
+        <div className="mx-auto max-w-7xl w-full px-6 sm:px-8 lg:px-12 space-y-12">
           <MotionReveal direction="up">
             <div className="text-center max-w-2xl mx-auto space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-xs font-semibold text-gold-dark uppercase tracking-wider">
-                Authorized Distribution
+              <div className="flex items-center justify-center gap-2.5">
+                <span className="h-[1px] w-8 bg-[#F0D9A0]/70" />
+                <span className="text-[11px] sm:text-xs uppercase tracking-[0.28em] font-bold text-white/90 font-sans">
+                  Authorized Distribution
+                </span>
+                <span className="h-[1px] w-8 bg-[#F0D9A0]/70" />
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-medium text-primary tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
                 Our Multi-Brand Portfolio
               </h2>
-              <p className="text-base text-charcoal-muted font-light">
+              {/* Thin gold hairline with a small dot */}
+              <div className="flex items-center justify-center gap-1.5 pt-1" aria-hidden="true">
+                <span className="w-16 h-[1.5px] bg-[#F0D9A0]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F0D9A0]" />
+              </div>
+              <p className="text-base sm:text-lg text-white/90 font-normal max-w-2xl mx-auto leading-relaxed pt-1">
                 Partnered with globally established beauty, dermatological, and personal care manufacturers.
               </p>
             </div>
           </MotionReveal>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-            {BRANDS.map((brand, i) => (
-              <MotionReveal key={i} delay={i * 70} direction="up">
-                <div className="group relative flex flex-col items-center justify-between min-h-[160px] rounded-2xl border border-border-subtle bg-white p-6 text-center shadow-2xs hover:border-gold/60 hover:shadow-xl hover:scale-[1.04] hover:-translate-y-1.5 transition-all duration-300 cursor-default">
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative h-14 w-full flex items-center justify-center p-1">
-                    <Image
-                      src={brand.logo}
-                      alt={`${brand.name} logo`}
-                      width={120}
-                      height={48}
-                      className="max-h-12 w-auto max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="mt-2 text-center">
-                    <span className="font-serif text-lg font-semibold tracking-wide text-primary group-hover:text-gold-dark transition-colors block">
-                      {brand.name}
-                    </span>
-                    <span className="text-[11px] uppercase tracking-wider text-charcoal-muted font-medium block mt-0.5">
-                      {brand.tag}
-                    </span>
-                  </div>
-                </div>
-              </MotionReveal>
-            ))}
-          </div>
+          <CosmeticsBrandsSection />
         </div>
       </section>
 
-      {/* 3. Product Categories */}
-      <section className="bg-cream py-24 sm:py-32 px-6 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl space-y-16">
+      {/* 3. Global Brands Band: 9+ Global Brands, One Trusted Distributor */}
+      <CosmeticsVisualBand />
+
+      {/* 4. Product Categories */}
+      <section className="relative overflow-hidden bg-[#173A6B] py-24 sm:py-28 lg:py-32 border-t border-[#0F2A4A]/20 border-b border-[#0F2A4A]/20">
+        <div className="relative z-10 mx-auto max-w-7xl w-full px-6 sm:px-8 lg:px-12 space-y-16">
           <MotionReveal direction="up">
             <div className="max-w-2xl space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="h-px w-6 bg-gold" />
-                <span className="text-xs uppercase tracking-widest font-semibold text-gold-dark">
+              <div className="flex items-center gap-2.5">
+                <span className="h-[1px] w-8 bg-[#B8934A]/50" />
+                <span className="text-[11px] sm:text-xs uppercase tracking-[0.28em] font-bold text-[#B8934A] font-sans">
                   Product Pillars
                 </span>
+                <span className="h-[1px] w-8 bg-[#B8934A]/50" />
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-primary tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
                 Product Categories
               </h2>
+              {/* Thin gold hairline with dot */}
+              <div className="flex items-center gap-1.5 pt-1" aria-hidden="true">
+                <span className="w-16 h-[1.5px] bg-[#B8934A]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B8934A]" />
+              </div>
             </div>
           </MotionReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-            {CATEGORIES.map((category, idx) => (
-              <MotionReveal key={idx} delay={idx * 130} direction="up" className="h-full flex flex-col">
-                <div className="group flex flex-col justify-between rounded-2xl border border-border-subtle bg-white p-8 shadow-xs hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 h-full w-full">
-                  <div className="space-y-6 flex-1 flex flex-col">
-                    {/* Premium Unsplash category image */}
-                    <div className="overflow-hidden rounded-xl aspect-16/10 relative shrink-0">
-                      <Image
-                        src={category.imageUrl}
-                        alt={category.imageAlt}
-                        fill
-                        className="object-cover object-center group-hover:scale-[1.05] transition-transform duration-700 ease-out"
-                        sizes="(max-width: 1024px) 100vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent" />
-                    </div>
-                    <div className="shrink-0">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark">
-                        Category 0{idx + 1}
-                      </span>
-                      <h3 className="font-serif text-2xl font-medium text-primary mt-1">{category.title}</h3>
-                      <p className="text-xs text-charcoal-muted font-medium uppercase tracking-wider mt-1">
-                        {category.subtitle}
-                      </p>
-                    </div>
-                    <p className="text-sm text-charcoal-muted font-light leading-relaxed flex-1">{category.description}</p>
-                    <ul className="space-y-2.5 pt-2 border-t border-border-subtle/80 shrink-0">
-                      {category.items.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-charcoal">
-                          <Check className="h-4 w-4 shrink-0 text-gold-dark mt-0.5" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="pt-8 mt-auto border-t border-border-subtle/60 shrink-0">
-                    <CTAButton href="/contact" variant="outline" size="sm" className="w-full justify-center">
-                      Inquire Distribution
-                    </CTAButton>
-                  </div>
-                </div>
-              </MotionReveal>
-            ))}
-          </div>
+          <CosmeticsCategoriesSection />
         </div>
       </section>
 
-      {/* 4. CTA */}
-      <section className="bg-ivory py-20 px-6 sm:px-8 lg:px-12 border-t border-border-subtle text-center">
-        <div className="mx-auto max-w-3xl space-y-6">
-          <MotionReveal direction="up">
-            <h2 className="font-serif text-2xl sm:text-3xl font-medium text-primary">
-              Partner With Lamstone as a Retailer or Brand Supplier
-            </h2>
-            <p className="text-base text-charcoal-muted font-light leading-relaxed mt-3">
-              Gain access to a statewide retail footprint and professional logistics infrastructure.
-            </p>
-            <div className="pt-4">
-              <CTAButton href="/contact" variant="primary" size="lg">
-                Contact Distribution Team
-              </CTAButton>
-            </div>
-          </MotionReveal>
-        </div>
-      </section>
+      {/* 5. Dynamic CTA Banner */}
+      <CosmeticsCtaSection />
     </div>
   );
 }

@@ -9,7 +9,8 @@ interface HeroBannerProps {
   children?: React.ReactNode; // CTAs or actions
   imageUrl?: string;
   imageAlt?: string;
-  theme?: "green" | "lame" | "ivory";
+  theme?: "green" | "lame" | "ivory" | "navy";
+  eyebrowTheme?: "red" | "gold";
   heightClassName?: string;
 }
 
@@ -21,18 +22,22 @@ export default function HeroBanner({
   imageUrl = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=85",
   imageAlt = "Lamstone HealthCare hero background",
   theme = "green",
+  eyebrowTheme,
   heightClassName = "py-32 sm:py-44",
 }: HeroBannerProps) {
   const isLame = theme === "lame";
   const isIvory = theme === "ivory";
+  const isNavy = theme === "navy";
 
   return (
     <section
-      className={`relative overflow-hidden ${heightClassName} px-6 sm:px-8 lg:px-12 flex items-center ${
+      className={`relative overflow-hidden ${heightClassName} flex items-center ${
         isLame
           ? "bg-lame-bg text-lame-charcoal"
           : isIvory
           ? "bg-ivory text-charcoal"
+          : isNavy
+          ? "bg-[var(--primary)] text-white"
           : "bg-primary text-white"
       }`}
     >
@@ -45,7 +50,7 @@ export default function HeroBanner({
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center animate-ken-burns opacity-35"
+            className={`object-cover object-center animate-ken-burns ${isNavy ? "opacity-40" : "opacity-35"}`}
           />
 
           {/* Soft Gradient Overlay for Readability and Depth */}
@@ -53,6 +58,17 @@ export default function HeroBanner({
             <div className="absolute inset-0 bg-gradient-to-r from-lame-bg via-lame-bg/85 to-lame-bg/50" />
           ) : isIvory ? (
             <div className="absolute inset-0 bg-gradient-to-r from-ivory via-ivory/90 to-ivory/60" />
+          ) : isNavy ? (
+            <>
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)] via-[var(--primary)]/90 to-[var(--primary)]/55" />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(circle at 18% 45%, var(--primary) 0%, rgba(11,42,74,0.65) 55%, transparent 100%)",
+                }}
+              />
+            </>
           ) : (
             <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/50" />
           )}
@@ -64,35 +80,37 @@ export default function HeroBanner({
                 ? "from-lame-bg via-transparent to-transparent"
                 : isIvory
                 ? "from-ivory via-transparent to-transparent"
+                : isNavy
+                ? "from-[var(--primary)] via-[var(--primary)]/25 to-transparent"
                 : "from-primary via-transparent to-transparent"
             }`}
           />
         </div>
       )}
 
-      {/* 2. Soft Ambient Blurred Glow behind headlines */}
-      <div
-        className={`pointer-events-none absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full blur-3xl opacity-20 ${
-          isLame ? "bg-lame-rose" : "bg-gold"
-        }`}
-        aria-hidden="true"
-      />
-
-      {/* 3. Foreground Content with Staggered Motion */}
-      <div className="relative z-10 mx-auto max-w-7xl w-full">
+      {/* Foreground Content with Staggered Motion */}
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 sm:px-8 lg:px-12">
         <div className="max-w-3xl space-y-7">
           {/* Eyebrow */}
           {eyebrow && (
             <MotionReveal delay={100} direction="up">
               <div className="flex items-center gap-3">
                 <span
-                  className={`h-[1.5px] w-8 ${
-                    isLame ? "bg-lame-rose" : "bg-gold"
+                  className={`h-[2px] w-7 ${
+                    eyebrowTheme === "red"
+                      ? "bg-[var(--accent)]"
+                      : isLame
+                      ? "bg-lame-rose"
+                      : "bg-[var(--accent-secondary)]"
                   }`}
                 />
                 <span
-                  className={`text-xs uppercase tracking-[0.28em] font-semibold ${
-                    isLame ? "text-lame-rose-dark" : "text-gold"
+                  className={`text-xs uppercase tracking-[0.28em] ${
+                    eyebrowTheme === "red"
+                      ? "font-bold text-[var(--accent-light)] font-sans drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
+                      : isLame
+                      ? "font-semibold text-lame-rose-dark"
+                      : "font-semibold text-[var(--accent-secondary)]"
                   }`}
                 >
                   {eyebrow}
@@ -125,6 +143,8 @@ export default function HeroBanner({
                     ? "text-neutral-700"
                     : isIvory
                     ? "text-charcoal-muted"
+                    : isNavy
+                    ? "text-white/80"
                     : "text-emerald-50/90"
                 }`}
               >

@@ -1,11 +1,274 @@
 @import "tailwindcss";
 
-:root {
-  --background: #FAF8F3;
-  --foreground: #1A1A1A;
+:root,
+[data-theme="home"] {
+  --background: #FBF8F2;
+  --foreground: #3E4856;
+
+  --primary: #0E2244;
+  --primary-deep: #071224;
+  --primary-soft: #ECEDF1;
+  --accent: #9E1B2A;
+  --accent-secondary: #C6A15B;
+  --accent-light: #C3394B;
+  --accent-soft: #F6E8EA;
+  --accent-text: #67101B;
+  --bg: #FBF8F2;
+  --surface: #FFFFFF;
+  --border: rgba(158, 27, 42, 0.22);
+  --border-secondary: rgba(198, 161, 91, 0.22);
+  --heading: #081427;
+  --body: #3E4856;
+  --shadow-color: rgba(14, 34, 68, 0.18);
+  --dark-gradient: linear-gradient(135deg, #071224 0%, #0E2244 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #071224 0%, #0E2244 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #E0BE73 0%, #C6A15B 100%);
+
+  /* Shared Brand Tokens */
+  --header-height: 77px;
+  --brand-red: #B31942;
+  --navbar-red: var(--brand-red);
+  --about-gold-soft: #F0D9A0;
+  --about-cream-text: #FFF3E0;
+
+  /* Hexagon Honeycomb Pattern Tokens */
+  --hex-network-color: #173A6B;
+  --hex-gold-accent: #B8934A;
+  --hex-network-opacity: 0.14;
+  --hex-network-opacity-mobile: 0.05;
+
+  /* Premium Card Tokens */
+  --card-surface-ivory: #FFFEFB;
+  --card-border-gold: rgba(184, 147, 74, 0.35);
+  --card-border-gold-hover: rgba(184, 147, 74, 0.70);
+  --card-shadow-layered: 0 1px 2px rgba(15, 42, 74, 0.05), 0 18px 40px rgba(15, 42, 74, 0.09);
+  --card-shadow-hover: 0 4px 8px rgba(15, 42, 74, 0.06), 0 24px 50px rgba(15, 42, 74, 0.14);
+}
+
+[data-theme="about"] {
+  --primary: #001F3F;
+  --primary-deep: #001226;
+  --primary-soft: #F0F4F8;
+  --accent: #C6A15B;
+  --accent-secondary: #E0BE73;
+  --accent-light: #ECCB85;
+  --accent-soft: #FAF5EA;
+  --accent-text: #785A1D;
+  --bg: #EAEFF5;
+  --surface: #F0F5FA;
+  --border: rgba(0, 31, 63, 0.08);
+  --border-secondary: rgba(198, 161, 91, 0.25);
+  --heading: #001F3F;
+  --body: #334155;
+  --shadow-color: rgba(0, 31, 63, 0.1);
+  --dark-gradient: linear-gradient(135deg, #001226 0%, #001F3F 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #E0BE73 0%, #C6A15B 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #E0BE73 0%, #C6A15B 100%);
+
+  /* About Page Editorial Gold & Navy Theme */
+  --about-gold: #B8934A;
+  --about-deep-blue: #173A6B;
+  --about-navy-text: #0F2A4A;
+  --about-navy-muted: #243E5E;
+  --about-tint-cream: #FBF7F0;
+  --about-tint-warm-ivory: #FFFDF9;
+  --about-tint-soft-sand-vision: var(--navbar-red);
+  --about-vision-bg: var(--navbar-red);
+  --about-vision-gold: var(--about-gold-soft);
+  --about-vision-cream: var(--about-cream-text);
+  --about-vision-card-border: rgba(240, 217, 160, 0.6);
+  --about-campus-gradient: linear-gradient(to bottom, #FFFDF9 0%, #F6F1E8 30%, #E9EDF0 65%, #D6E2EE 100%);
+  --about-tint-soft-sand-campus: var(--about-campus-gradient);
+  --about-tint-soft-sand-pills: #F3E6D3;
+  --about-tint-warm-parchment: #F6EEDF;
+  --about-card-shadow: 0 1px 2px rgba(15, 42, 74, 0.06), 0 12px 32px rgba(15, 42, 74, 0.08);
+  --about-card-shadow-hover: 0 4px 8px rgba(15, 42, 74, 0.08), 0 16px 40px rgba(184, 147, 74, 0.12);
+}
+
+[data-theme="pharmacy"] {
+  --primary: #17654A;
+  --primary-deep: #0E3F2E;
+  --primary-soft: #EDF7F3;
+  --accent: #B08D57;
+  --accent-secondary: #B08D57;
+  --accent-light: #C9AD81;
+  --accent-soft: #F7F3EE;
+  --accent-text: #6B5026;
+  --bg: #FBF8F2;
+  --surface: #FFFFFF;
+  --border: rgba(176, 141, 87, 0.22);
+  --border-secondary: rgba(176, 141, 87, 0.22);
+  --heading: #0A3324;
+  --body: #354D43;
+  --shadow-color: rgba(23, 101, 74, 0.18);
+  --dark-gradient: linear-gradient(135deg, #0E3F2E 0%, #17654A 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #0E3F2E 0%, #17654A 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #C9AD81 0%, #B08D57 100%);
+}
+
+[data-theme="cosmetics"] {
+  --primary: #0F2A4A;
+  --primary-deep: #071224;
+  --primary-soft: #EAEFF5;
+  --accent: #B8934A;
+  --accent-secondary: #B8934A;
+  --accent-light: #F0D9A0;
+  --accent-soft: #FBF7F0;
+  --accent-text: #B8934A;
+  --bg: #F1E2CC;
+  --surface: #FFFFFF;
+  --border: rgba(184, 147, 74, 0.30);
+  --border-secondary: rgba(15, 42, 74, 0.15);
+  --heading: #0F2A4A;
+  --body: #243E5E;
+  --shadow-color: rgba(15, 42, 74, 0.12);
+  --dark-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #F0D9A0 0%, #B8934A 100%);
+}
+
+[data-theme="lame"] {
+  --primary: #0F2A4A;
+  --primary-deep: #071224;
+  --primary-soft: #EAEFF5;
+  --accent: #B8934A;
+  --accent-secondary: #B8934A;
+  --accent-light: #F0D9A0;
+  --accent-soft: #FBF7F0;
+  --accent-text: #B8934A;
+  --bg: #F1E2CC;
+  --surface: #FFFFFF;
+  --border: rgba(184, 147, 74, 0.30);
+  --border-secondary: rgba(15, 42, 74, 0.15);
+  --heading: #0F2A4A;
+  --body: #243E5E;
+  --shadow-color: rgba(15, 42, 74, 0.12);
+  --dark-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #F0D9A0 0%, #B8934A 100%);
+}
+
+[data-theme="blogs"] {
+  --primary: #0F2A4A;
+  --primary-deep: #071224;
+  --primary-soft: #EAEFF5;
+  --accent: #B8934A;
+  --accent-secondary: #B8934A;
+  --accent-light: #F0D9A0;
+  --accent-soft: #FBF7F0;
+  --accent-text: #B8934A;
+  --bg: #F1E2CC;
+  --surface: #FFFFFF;
+  --border: rgba(184, 147, 74, 0.30);
+  --border-secondary: rgba(15, 42, 74, 0.15);
+  --heading: #0F2A4A;
+  --body: #243E5E;
+  --shadow-color: rgba(15, 42, 74, 0.12);
+  --dark-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #F0D9A0 0%, #B8934A 100%);
+}
+
+[data-theme="invest"] {
+  --primary: #0F2A4A;
+  --primary-deep: #071224;
+  --primary-soft: #EAEFF5;
+  --accent: #B8934A;
+  --accent-secondary: #B8934A;
+  --accent-light: #F0D9A0;
+  --accent-soft: #FBF7F0;
+  --accent-text: #B8934A;
+  --bg: #F1E2CC;
+  --surface: #FFFFFF;
+  --border: rgba(184, 147, 74, 0.30);
+  --border-secondary: rgba(15, 42, 74, 0.15);
+  --heading: #0F2A4A;
+  --body: #243E5E;
+  --shadow-color: rgba(15, 42, 74, 0.12);
+  --dark-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #F0D9A0 0%, #B8934A 100%);
+}
+
+[data-theme="careers"] {
+  --primary: #0F2A4A;
+  --primary-deep: #071224;
+  --primary-soft: #EAEFF5;
+  --accent: #B8934A;
+  --accent-secondary: #B8934A;
+  --accent-light: #F0D9A0;
+  --accent-soft: #FBF7F0;
+  --accent-text: #B8934A;
+  --bg: #F1E2CC;
+  --surface: #FFFFFF;
+  --border: rgba(184, 147, 74, 0.30);
+  --border-secondary: rgba(15, 42, 74, 0.15);
+  --heading: #0F2A4A;
+  --body: #243E5E;
+  --shadow-color: rgba(15, 42, 74, 0.12);
+  --dark-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #0F2A4A 0%, #173A6B 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #F0D9A0 0%, #B8934A 100%);
+}
+
+[data-theme="contact"] {
+  --primary: #0E2244;
+  --primary-deep: #071224;
+  --primary-soft: #ECEDF1;
+  --accent: #9E1B2A;
+  --accent-secondary: #C6A15B;
+  --accent-light: #C3394B;
+  --accent-soft: #F6E8EA;
+  --accent-text: #67101B;
+  --bg: #FBF8F2;
+  --surface: #FFFFFF;
+  --border: rgba(158, 27, 42, 0.22);
+  --border-secondary: rgba(198, 161, 91, 0.22);
+  --heading: #081427;
+  --body: #3E4856;
+  --shadow-color: rgba(14, 34, 68, 0.18);
+  --dark-gradient: linear-gradient(135deg, #071224 0%, #0E2244 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #071224 0%, #0E2244 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #E0BE73 0%, #C6A15B 100%);
+}
+
+[data-theme="perfumes"] {
+  --primary: #CAA75A;
+  --primary-deep: #1B1B1B;
+  --primary-soft: #262626;
+  --accent: #E5C27A;
+  --accent-secondary: #CAA75A;
+  --accent-light: #F3DFB0;
+  --accent-soft: #2C261A;
+  --accent-text: #E5C27A;
+  --bg: #1B1B1B;
+  --surface: #222222;
+  --border: rgba(202, 167, 90, 0.28);
+  --border-secondary: rgba(229, 194, 122, 0.40);
+  --heading: #E5C27A;
+  --body: #F3DFB0;
+  --shadow-color: rgba(0, 0, 0, 0.65);
+  --dark-gradient: linear-gradient(135deg, #1B1B1B 0%, #121212 100%);
+  --btn-solid-gradient: linear-gradient(135deg, #E5C27A 0%, #B8934A 100%);
+  --btn-gold-gradient: linear-gradient(135deg, #F3DFB0 0%, #CAA75A 100%);
+}
+
+/* Header, Footer, Admin: Keep fixed original brand colors */
+header, footer, [data-theme-fixed], [data-admin-panel] {
+  --color-primary: #1F6D3F;
+  --color-gold: #C9A24B;
+}
+
+/* Page Root Wrapper: Clean background */
+[data-theme] {
+  background-color: var(--bg);
 }
 
 @theme {
+  /* Navbar & Brand Red */
+  --color-navbar-red: #B31942;
+  --color-brand-red: #B31942;
+
   /* Primary: Deep Forest Green (#1F6D3F) */
   --color-primary: #1F6D3F;
   --color-primary-dark: #154D2C;
@@ -34,6 +297,7 @@
   --color-lame-border: #EEDCD7;
 
   --font-serif: var(--font-playfair), "Cormorant Garamond", Georgia, serif;
+  --font-cormorant: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -233,3 +497,416 @@ h1, h2, h3, h4, h5, h6 {
   will-change: transform, opacity;
 }
 
+/* Subtle luxury card glass shimmer sweep */
+@keyframes glassShimmer {
+  0% {
+    transform: translateX(-180%) skewX(-25deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.75;
+  }
+  32% {
+    transform: translateX(400%) skewX(-25deg);
+    opacity: 0.75;
+  }
+  38%, 100% {
+    transform: translateX(400%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+.animate-glass-shimmer {
+  animation: glassShimmer 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Subtle Play Icon Gentle Pulse */
+@keyframes subtlePlayPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtlePlayPulse 2.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Antigravity floating levitation animations */
+@keyframes floatLevitate {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+@keyframes floatLevitateDelayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-11px) rotate(-0.5deg);
+  }
+}
+
+@keyframes floatLevitateSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-levitate {
+  animation: floatLevitate 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-delayed {
+  animation: floatLevitateDelayed 7.5s ease-in-out infinite 1s;
+  will-change: transform;
+}
+
+.animate-float-slow {
+  animation: floatLevitateSlow 9s ease-in-out infinite 0.5s;
+  will-change: transform;
+}
+
+/* About Page - Our Story Consultation Photo Full-Bleed Mask Blend */
+.story-desktop-blend {
+  -webkit-mask-image:
+    linear-gradient(to right, #000 0%, #000 36%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, #000 0%, #000 36%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.story-mobile-blend {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%),
+    linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%),
+    linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Healthcare Seamless Medical Pattern Overlay */
+:root {
+  --healthcare-pattern-color: #0F2A4A;
+}
+
+.healthcare-pattern-overlay {
+  background-image: url('/patterns/healthcare.svg');
+  background-repeat: repeat;
+  background-size: 560px 400px;
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 20%, #000 75%);
+  mask-image: radial-gradient(ellipse at center, transparent 20%, #000 75%);
+}
+
+@media (max-width: 480px) {
+  .healthcare-pattern-overlay {
+    opacity: 0.04 !important;
+  }
+}
+
+/* Hexagon Honeycomb Pattern Overlay for Our Values */
+.hex-network-cluster {
+  opacity: var(--hex-network-opacity, 0.14);
+  transition: opacity 0.25s ease;
+}
+
+@media (max-width: 768px) {
+  .hex-network-cluster {
+    width: 15% !important;
+    max-width: 140px !important;
+    opacity: var(--hex-network-opacity-mobile, 0.05) !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .hex-network-cluster {
+    display: none !important;
+  }
+}
+
+/* Explicit Playfair Display Italic rule for Cosmetics Hero "Division" */
+.cosmetics-hero-division-word {
+  font-family: 'Playfair Display', serif !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+}
+
+/* Haute Perfumes Typography & Aesthetic (Launched Luxury Brand) */
+.font-devil-breeze {
+  font-family: 'devil breeze', 'Playfair Display', 'Cinzel', 'Montserrat', sans-serif;
+}
+
+.font-bimbo {
+  font-family: 'Bimbo', 'Playfair Display', 'Cormorant Garamond', cursive;
+}
+
+.font-poppins {
+  font-family: 'Poppins', 'Inter', 'Manrope', sans-serif;
+}
+
+/* Button Hover Lift */
+.btn-gold-lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+.btn-gold-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -4px rgba(184, 147, 74, 0.35);
+}
+
+/* Podium & Plinth Styling */
+.stone-podium-shadow {
+  box-shadow: 0 16px 28px -8px rgba(26, 23, 20, 0.22), 0 4px 10px -2px rgba(26, 23, 20, 0.10);
+}
+
+/* Bottle Contact Shadow (Realistic Elliptical Soft Shadow under base) */
+.bottle-contact-shadow {
+  background: radial-gradient(ellipse at center, rgba(26, 23, 20, 0.32) 0%, rgba(26, 23, 20, 0.15) 50%, transparent 75%);
+}
+
+/* Subtle Hero Flacon Levitation / Floating Breathing */
+@keyframes flaconFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(0.6deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(-0.6deg);
+  }
+}
+
+.animate-flacon-float {
+  animation: flaconFloat 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Motion Graphic: Volumetric Rotating Sunburst God Rays */
+@keyframes spinRays {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-rays {
+  animation: spinRays 45s linear infinite;
+  will-change: transform;
+}
+
+/* Motion Graphic: Scent Waves (Concentric Pulsating Golden Aura Rings) */
+@keyframes scentRingPulse {
+  0% {
+    transform: scale(0.65);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.animate-scent-ring-1 {
+  animation: scentRingPulse 5.4s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
+}
+
+.animate-scent-ring-2 {
+  animation: scentRingPulse 5.4s cubic-bezier(0.15, 0.85, 0.35, 1) infinite 1.8s;
+}
+
+.animate-scent-ring-3 {
+  animation: scentRingPulse 5.4s cubic-bezier(0.15, 0.85, 0.35, 1) infinite 3.6s;
+}
+
+/* Motion Graphic: Specular Light Caustic Glint Sweep across Bottle & 24K Crown */
+@keyframes flaconGlint {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  28% {
+    transform: translateX(180%) skewX(-20deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(180%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.animate-flacon-glint {
+  animation: flaconGlint 4.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Motion Graphic: Ambient Golden Halo Breathing */
+@keyframes goldGlowPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
+.animate-gold-glow-pulse {
+  animation: goldGlowPulse 5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Motion Graphic: Floating Fragrance Golden Particle Motes */
+@keyframes particleFloatSlow {
+  0% {
+    transform: translate(0px, 0px) scale(0.6);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.95;
+    transform: translate(6px, -25px) scale(1);
+  }
+  75% {
+    opacity: 0.8;
+    transform: translate(-6px, -70px) scale(1.1);
+  }
+  100% {
+    transform: translate(10px, -110px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.animate-particle-1 {
+  animation: particleFloatSlow 4.6s ease-in-out infinite;
+}
+.animate-particle-2 {
+  animation: particleFloatSlow 5.8s ease-in-out infinite 1.2s;
+}
+.animate-particle-3 {
+  animation: particleFloatSlow 6.4s ease-in-out infinite 2.4s;
+}
+.animate-particle-4 {
+  animation: particleFloatSlow 5.2s ease-in-out infinite 3.6s;
+}
+
+/* 3D Floating Badges Micro-animations */
+@keyframes badgeFloatLeft {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes badgeFloatRight {
+  0%, 100% {
+    transform: translateY(0px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(-1deg);
+  }
+}
+
+.animate-badge-float-1 {
+  animation: badgeFloatLeft 5s ease-in-out infinite;
+}
+
+.animate-badge-float-2 {
+  animation: badgeFloatRight 5.6s ease-in-out infinite 0.8s;
+}
+
+/* Original Animation: Smooth Infinite Marquee with Pause on Hover */
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-smooth {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-smooth:hover {
+  animation-play-state: paused;
+}
+
+/* Reveal-on-scroll: VISIBLE BY DEFAULT to guarantee content always renders immediately */
+.reveal-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Progressive enhancement for clients with JS enabled and IntersectionObserver */
+.js-has-observer .reveal-target:not(.is-visible) {
+  opacity: 0.15;
+  transform: translateY(16px);
+}
+
+.js-has-observer .reveal-target.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-soft,
+  .animate-flacon-float,
+  .animate-spin-rays,
+  .animate-scent-ring-1,
+  .animate-scent-ring-2,
+  .animate-scent-ring-3,
+  .animate-flacon-glint,
+  .animate-gold-glow-pulse,
+  .animate-particle-1,
+  .animate-particle-2,
+  .animate-particle-3,
+  .animate-particle-4,
+  .animate-badge-float-1,
+  .animate-badge-float-2,
+  .animate-marquee-smooth,
+  .btn-gold-lift,
+  .reveal-on-scroll,
+  .reveal-target {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}

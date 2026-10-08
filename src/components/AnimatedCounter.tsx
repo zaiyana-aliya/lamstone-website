@@ -22,42 +22,54 @@ export default function AnimatedCounter({
   const hasAnimated = useRef(false);
 
   useEffect(() => {
+    const currentEl = elementRef.current;
+    if (!currentEl) return;
+
+    const startCounting = () => {
+      if (hasAnimated.current) return;
+      hasAnimated.current = true;
+      let startTime: number | null = null;
+
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        // Ease out cubic
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(easeOut * target));
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount(target);
+        }
+      };
+
+      requestAnimationFrame(animate);
+    };
+
+    // Check if counter is already visible on initial mount
+    const rect = currentEl.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      startCounting();
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          let startTime: number | null = null;
-
-          const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            // Ease out cubic
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(easeOut * target));
-
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            } else {
-              setCount(target);
-            }
-          };
-
-          requestAnimationFrame(animate);
+        if (entry.isIntersecting) {
+          startCounting();
+          observer.unobserve(currentEl);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0, rootMargin: "0px 0px 40px 0px" }
     );
 
-    const currentEl = elementRef.current;
-    if (currentEl) {
-      observer.observe(currentEl);
-    }
+    observer.observe(currentEl);
 
     return () => {
-      if (currentEl) {
-        observer.unobserve(currentEl);
-      }
+      observer.unobserve(currentEl);
     };
   }, [target, duration]);
 

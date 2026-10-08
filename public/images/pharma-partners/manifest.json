@@ -1,0 +1,182 @@
+{
+  "sun-pharma": {
+    "name": "Sun Pharmaceutical Industries",
+    "file": "/images/pharma-partners/sun-pharma.svg",
+    "type": "svg",
+    "size": 18114
+  },
+  "abbott-india": {
+    "name": "Abbott India",
+    "file": "/images/pharma-partners/abbott-india.png",
+    "type": "png",
+    "size": 1567
+  },
+  "cipla": {
+    "name": "Cipla",
+    "file": "/images/pharma-partners/cipla.svg",
+    "type": "svg",
+    "size": 1072
+  },
+  "mankind-pharma": {
+    "name": "Mankind Pharma",
+    "file": "/images/pharma-partners/mankind-pharma.png",
+    "type": "png",
+    "size": 294
+  },
+  "alkem-laboratories": {
+    "name": "Alkem Laboratories",
+    "file": "/images/pharma-partners/alkem-laboratories.png",
+    "type": "png",
+    "size": 3315
+  },
+  "torrent-pharmaceuticals": {
+    "name": "Torrent Pharmaceuticals",
+    "file": "/images/pharma-partners/torrent-pharmaceuticals.png",
+    "type": "png",
+    "size": 559
+  },
+  "lupin": {
+    "name": "Lupin",
+    "file": "/images/pharma-partners/lupin.png",
+    "type": "png",
+    "size": 290
+  },
+  "zydus-lifesciences": {
+    "name": "Zydus Lifesciences",
+    "file": "/images/pharma-partners/zydus-lifesciences.ico",
+    "type": "ico",
+    "size": 3434
+  },
+  "dr-reddys": {
+    "name": "Dr. Reddy's Laboratories",
+    "file": "/images/pharma-partners/dr-reddys.svg",
+    "type": "svg",
+    "size": 5748
+  },
+  "intas-pharmaceuticals": {
+    "name": "Intas Pharmaceuticals",
+    "file": "/images/pharma-partners/intas-pharmaceuticals.svg",
+    "type": "svg",
+    "size": 2159
+  },
+  "macleods-pharmaceuticals": {
+    "name": "Macleods Pharmaceuticals",
+    "file": "/images/pharma-partners/macleods-pharmaceuticals.png",
+    "type": "png",
+    "size": 1073
+  },
+  "glenmark-pharmaceuticals": {
+    "name": "Glenmark Pharmaceuticals",
+    "file": "/images/pharma-partners/glenmark-pharmaceuticals.jpg",
+    "type": "jpg",
+    "size": 3120
+  },
+  "usv": {
+    "name": "USV",
+    "file": "/images/pharma-partners/usv.png",
+    "type": "png",
+    "size": 1743
+  },
+  "aristo-pharmaceuticals": {
+    "name": "Aristo Pharmaceuticals",
+    "file": "/images/pharma-partners/aristo-pharmaceuticals.png",
+    "type": "png",
+    "size": 1268
+  },
+  "micro-labs": {
+    "name": "Micro Labs",
+    "file": "/images/pharma-partners/micro-labs.png",
+    "type": "png",
+    "size": 352
+  },
+  "ipca-laboratories": {
+    "name": "IPCA Laboratories",
+    "file": "/images/pharma-partners/ipca-laboratories.png",
+    "type": "png",
+    "size": 625
+  },
+  "eris-lifesciences": {
+    "name": "Eris Lifesciences",
+    "file": "/images/pharma-partners/eris-lifesciences.png",
+    "type": "png",
+    "size": 2101
+  },
+  "ajanta-pharma": {
+    "name": "Ajanta Pharma",
+    "file": "/images/pharma-partners/ajanta-pharma.png",
+    "type": "png",
+    "size": 801
+  },
+  "emcure-pharmaceuticals": {
+    "name": "Emcure Pharmaceuticals",
+    "file": "/images/pharma-partners/emcure-pharmaceuticals.png",
+    "type": "png",
+    "size": 359
+  },
+  "alembic-pharmaceuticals": {
+    "name": "Alembic Pharmaceuticals",
+    "file": "/images/pharma-partners/alembic-pharmaceuticals.png",
+    "type": "png",
+    "size": 1027
+  },
+  "aurobindo-pharma": {
+    "name": "Aurobindo Pharma",
+    "file": "/images/pharma-partners/aurobindo-pharma.png",
+    "type": "png",
+    "size": 3465
+  },
+  "hetero": {
+    "name": "Hetero",
+    "file": "/images/pharma-partners/hetero.png",
+    "type": "png",
+    "size": 5475
+  },
+  "biocon": {
+    "name": "Biocon",
+    "file": "/images/pharma-partners/biocon.png",
+    "type": "png",
+    "size": 2086
+  },
+  "sanofi-india": {
+    "name": "Sanofi India",
+    "file": "/images/pharma-partners/sanofi-india.svg",
+    "type": "svg",
+    "size": 1144
+  },
+  "pfizer-india": {
+    "name": "Pfizer India",
+    "file": "/images/pharma-partners/pfizer-india.svg",
+    "type": "svg",
+    "size": 1376
+  },
+  "gsk-india": {
+    "name": "GSK India",
+    "file": "/images/pharma-partners/gsk-india.png",
+    "type": "png",
+    "size": 6102
+  },
+  "merck": {
+    "name": "Merck",
+    "file": "/images/pharma-partners/merck.png",
+    "type": "png",
+    "size": 1322
+  },
+  "novo-nordisk": {
+    "name": "Novo Nordisk",
+    "file": "/images/pharma-partners/novo-nordisk.ico",
+    "type": "ico",
+    "size": 15086
+  },
+  "eli-lilly": {
+    "name": "Eli Lilly",
+    "file": "/images/pharma-partners/eli-lilly.png",
+    "type": "png",
+    "size": 1666
+  },
+  "himalaya-wellness": {
+    "name": "Himalaya Wellness",
+    "file": "/images/pharma-partners/himalaya-wellness.png",
+    "type": "png",
+    "size": 763
+  }
+}
