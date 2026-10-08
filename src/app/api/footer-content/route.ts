@@ -3,7 +3,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const revalidate = 60; // Cache for 60 seconds
 
-export const DEFAULT_FOOTER_CONTENT = {
+const DEFAULT_FOOTER_CONTENT = {
   section_key: "main",
   company_description:
     "A trusted healthcare and beauty ecosystem dedicated to enhancing wellness and confidence through premium pharmacy chains and cosmetic brands.",
